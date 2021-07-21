@@ -1,0 +1,58 @@
+version: "3.3"
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql_pay
+    command:
+      - "--default-authentication-plugin=mysql_native_password"
+    restart: always
+    volumes:
+      - ./.data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "3306:3306"
+
+  adminer:
+    image: adminer
+    restart: always
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    ports:
+      - "8081:8080"
+
+  php-fpm:
+    build:
+      args:
+        user: 1000
+        uid: 1000
+      dockerfile:  ./docker/php-fpm/Dockerfile
+      context: .
+    container_name: php-fpm_pay
+    links:
+      - mysql
+    working_dir: /application
+    volumes:
+      - ./:/application
+    ports:
+      - "9090:9090"
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_pay
+    restart: always
+    working_dir: /application
+    volumes:
+      - ./:/application
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8080:80"
+    links:
+      - php-fpm
+    depends_on:
+      - php-fpm
