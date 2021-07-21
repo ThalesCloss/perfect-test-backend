@@ -15,11 +15,14 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('customers');
+            $table->unsignedInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
             $table->dateTimeTz('sold_at');
             $table->unsignedInteger('amount')->default(1);
             $table->decimal('discount', 8, 2);
+            $table->enum('status', ['approved', 'canceled', 'returned'])->nullable(false);
             $table->timestamps();
         });
     }
