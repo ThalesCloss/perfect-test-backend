@@ -32,19 +32,13 @@ class CustomertRequest extends FormRequest
     public function messages()
     {
         return [
-            'name' => [
-                'required' => 'Informe seu nome',
-                'alpha' => 'Informe somente letras para o nome',
-                'min' => 'Informe seu nome'
-            ],
-            'email' => [
-                'email' => 'Informe um e-mail válido',
-                'Informe seu e-mail'
-            ],
-            'cpf' => [
-                'cpf' => 'O CPF informado é inválido',
-                'required' => 'O CPF é obrigatório'
-            ]
+            'name.required' => 'Informe seu nome',
+            'name.alpha' => 'Informe somente letras para o nome',
+            'name.min' => 'Informe seu nome',
+            'email.email' => 'Informe um e-mail válido',
+            'email.required' => 'Informe seu e-mail',
+            'cpf.cpf' => 'O CPF informado é inválido',
+            'cpf.required' => 'O CPF é obrigatório'
         ];
     }
 }
