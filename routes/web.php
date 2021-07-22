@@ -19,3 +19,4 @@ Route::get('/products', function () {
 });
 
 Route::post('/products', 'Product@createProduct');
+Route::post('/sales', 'Sale@createSale');
