@@ -14,22 +14,22 @@
 <div class='card mt-3'>
     <div class='card-body'>
         <h5 class="card-title mb-5">Tabela de vendas
-            <a href='' class='btn btn-secondary float-right btn-sm rounded-pill'><i class='fa fa-plus'></i> Nova venda</a>
+            <a href='/sales' class='btn btn-secondary float-right btn-sm rounded-pill'><i class='fa fa-plus'></i> Nova venda</a>
         </h5>
-        <form>
+        <form method="GET">
             <div class="form-row align-items-center">
                 <div class="col-sm-5 my-1">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text">Clientes</div>
                         </div>
-                        <select class="form-control" id="inlineFormInputName">
-                            <option>Clientes</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <select name="customer_id" class="form-control" id="inlineFormInputName">
+                            <option value="">Clientes</option>
+                            @forelse ( $customers as $customer)
+                                <option value="{{$customer['id']}}">{{$customer['name']}}</option>
+                            @empty
+                                <option>Nenhum cliente cadastrado</option>
+                            @endforelse
                         </select>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text">Período</div>
                         </div>
-                        <input type="text" class="form-control date_range" id="inlineFormInputGroupUsername" placeholder="Username">
+                        <input name="interval" type="text" class="form-control date_range" id="inlineFormInputGroupUsername" placeholder="Username">
                     </div>
                 </div>
                 <div class="col-sm-1 my-1">
@@ -63,48 +63,27 @@
                     Ações
                 </th>
             </tr>
+            @forelse ($sales as $sale)
             <tr>
                 <td>
-                    Perfect Caps
+                    {{$sale['product']['name']}}
                 </td>
                 <td>
-                    20/07/2019 19h15
+
                 </td>
                 <td>
-                    R$ 100,00
+                    R$ {{number_format($sale['total_price'],2,',','.')}}
                 </td>
                 <td>
-                    <a href='' class='btn btn-primary'>Editar</a>
+                    <a href="/sales/{{$sale['id']}}" class='btn btn-primary'>Editar</a>
                 </td>
             </tr>
+            @empty
             <tr>
-                <td>
-                    Nature Caps
-                </td>
-                <td>
-                    20/07/2019 19h20
-                </td>
-                <td>
-                    R$ 125,00
-                </td>
-                <td>
-                    <a href='' class='btn btn-primary'>Editar</a>
-                </td>
+                <td>Nenhuma venda localizada para o filtro aplicado</td>
             </tr>
-            <tr>
-                <td>
-                    Libid Caps
-                </td>
-                <td>
-                    20/07/2019 19h45
-                </td>
-                <td>
-                    R$ 110,00
-                </td>
-                <td>
-                    <a href='' class='btn btn-primary'>Editar</a>
-                </td>
-            </tr>
+            @endforelse
+
         </table>
     </div>
 </div>
