@@ -43,6 +43,8 @@ class Product extends Controller
     public function getProduct(Request $request, $id)
     {
         $product = $this->getProductUseCase->get($id);
+        if (empty($product))
+            return redirect('/')->withErrors(['not_found' => 'Produto não localizado']);
         return response()->view('crud_products', $product);
     }
 
