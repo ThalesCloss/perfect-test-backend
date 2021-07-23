@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Repositories\EloquentProductRepository\EloquentProductRepository;
 use App\Repositories\EloquentRepositories\EloquentCustomerRepository;
+use App\Repositories\EloquentRepositories\EloquentProductRepository;
 use App\Repositories\EloquentRepositories\EloquentSaleRepository;
 use App\UseCases\Contracts\CustomerRepository;
 use App\UseCases\Contracts\ProductRepository;
