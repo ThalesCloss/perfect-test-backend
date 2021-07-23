@@ -6,7 +6,7 @@ use App\Entities\Product;
 use App\Repositories\MemoryRepositories\MemoryProductRepository;
 use App\UseCases\Contracts\ProductRepository;
 
-class CreateProduct
+class DeleteProduct
 {
 
     private ProductRepository $repository;

@@ -5,7 +5,7 @@ namespace App\UseCases;
 use App\Repositories\MemoryRepositories\MemoryProductRepository;
 use App\UseCases\Contracts\ProductRepository;
 
-class GetProducts
+class GetProduct
 {
 
     private ProductRepository $repository;
