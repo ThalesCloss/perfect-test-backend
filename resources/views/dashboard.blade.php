@@ -123,39 +123,27 @@
                     Valor Total
                 </th>
             </tr>
+            @php
+            $statusList = ['approved'=>'Aprovado', 'canceled'=>'Cancelado', 'returned'=>'Devolvido']
+            @endphp
+            @forelse ($salesReport as $report)
             <tr>
                 <td>
-                    Vendidos
+                    {{$statusList[$report->status]}}
                 </td>
                 <td>
-                    100
+                    {{$report->amount}}
                 </td>
                 <td>
-                    R$ 100,00
+                    R$ {{number_format($report->total,2,',', '.')}}
                 </td>
             </tr>
+            @empty
             <tr>
-                <td>
-                    Cancelados
-                </td>
-                <td>
-                    120
-                </td>
-                <td>
-                    R$ 100,00
-                </td>
+                <td>Nenhuma venda realizada até o momento</td>
             </tr>
-            <tr>
-                <td>
-                    Devoluções
-                </td>
-                <td>
-                    120
-                </td>
-                <td>
-                    R$ 100,00
-                </td>
-            </tr>
+            @endforelse
+
         </table>
     </div>
 </div>
