@@ -14,7 +14,9 @@ class MemoryCustomerRepository implements CustomerRepository
     public function save(Customer $customer): void
     {
         if (!$customer->getId()) {
-            $this->customers[sizeOf($this->customers) + 1] = $customer->toArray();
+            $id = sizeOf($this->customers) + 1;
+            $this->customers[$id] = $customer->toArray();
+            $customer->setId($id);
             return;
         };
         $this->customers[$customer->getId()] = $customer->toArray();

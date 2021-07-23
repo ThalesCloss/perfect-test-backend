@@ -44,6 +44,10 @@ class Customer
     {
         return $this->name->getValue();
     }
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
     public function getId()
     {
         return $this->id;
