@@ -19,7 +19,7 @@ class CreateSalesTable extends Migration
             $table->foreign('product_id')->references('id')->on('products');
             $table->dateTimeTz('sold_at');
             $table->unsignedInteger('amount')->default(1);
-            $table->unsignedDecimal('discount', 8, 2);
+            $table->unsignedDecimal('discount', 8, 2)->default(0);
             $table->enum('status', ['approved', 'canceled', 'returned'])->nullable(false);
             $table->timestamps();
         });
