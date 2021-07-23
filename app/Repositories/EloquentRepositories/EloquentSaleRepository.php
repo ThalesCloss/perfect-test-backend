@@ -58,7 +58,7 @@ class EloquentSaleRepository implements SaleRepository
     }
     function getAll(): array
     {
-        $sales = SaleModel::all();
+        $sales = SaleModel::with('product')->get();
         return !empty($sales) ? $sales->toArray() : [];
     }
 
@@ -71,6 +71,11 @@ class EloquentSaleRepository implements SaleRepository
 
     function getByCustomerPeriod(DateTime $initialDate, DateTime $endDate, int $id = null): array
     {
-        SaleModel::with('customer')->find($id);
+        $query = SaleModel::with('product')->whereBetween('sold_at', [$initialDate, $endDate]);
+        if (!empty($id)) {
+            $query->where('customer_id', $id);
+        }
+
+        return $query->get()->toArray();
     }
 }
