@@ -28,6 +28,17 @@ class Customer
             throw new CreateProductException("Informe todos os campos do cliente");
         return new self($customer['name'], $customer['description'], $customer['price'], $id);
     }
+    public function toArray()
+    {
+        return array_filter(
+            [
+                "id" => $this->id,
+                "name" => $this->getName(),
+                "email" => $this->getEmail(),
+                "cpf" => $this->getCPF()
+            ]
+        );
+    }
 
     public function getName()
     {
