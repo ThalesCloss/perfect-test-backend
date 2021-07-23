@@ -2,7 +2,7 @@
 
 namespace App\Entities;
 
-use App\Entities\Exceptions\CreateProductException;
+use App\Entities\Exceptions\CreateCustomerException;
 use App\ValueObjects\CPF;
 use App\ValueObjects\Email;
 use App\ValueObjects\Name;
@@ -25,8 +25,8 @@ class Customer
     static function fromArray(array $customer, int $id = null)
     {
         if (!key_exists('name', $customer) || !key_exists('cpf', $customer) || !key_exists('email', $customer))
-            throw new CreateProductException("Informe todos os campos do cliente");
-        return new self($customer['name'], $customer['description'], $customer['price'], $id);
+            throw new CreateCustomerException("Informe todos os campos do cliente");
+        return new self($customer['name'], $customer['cpf'], $customer['email'], $id);
     }
     public function toArray()
     {
@@ -50,7 +50,7 @@ class Customer
     }
     public function getEmail()
     {
-        return $this->email;
+        return $this->email->getValue();
     }
     public function getCPF()
     {
