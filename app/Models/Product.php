@@ -8,5 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
     use SoftDeletes;
-    //
+
+    protected $fillable = [
+        'name', 'description', 'price',
+    ];
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
 }
