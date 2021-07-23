@@ -50,9 +50,9 @@
                 <label for="status">Status</label>
                 <select name="status" id="status" class="form-control">
                     <option selected>Escolha...</option>
-                    <option {{$status=='approved'? 'selected': ''}} value="approved">Aprovado</option>
-                    <option {{$status=='canceled'? 'selected': ''}} value="canceled">Cancelado</option>
-                    <option {{$status=='returned'? 'selected': ''}} value="returned">Devolvido</option>
+                    <option {{isset($status) && $status=='approved'? 'selected': ''}} value="approved">Aprovado</option>
+                    <option {{isset($status) &&  $status=='canceled'? 'selected': ''}} value="canceled">Cancelado</option>
+                    <option {{isset($status) &&  $status=='returned'? 'selected': ''}} value="returned">Devolvido</option>
                 </select>
             </div>
 
