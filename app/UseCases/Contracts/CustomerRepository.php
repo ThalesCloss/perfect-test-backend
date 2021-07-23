@@ -3,6 +3,8 @@
 namespace App\UseCases\Contracts;
 
 use App\Entities\Customer;
+use App\ValueObjects\CPF;
+use App\ValueObjects\Email;
 
 interface CustomerRepository
 {
@@ -11,5 +13,5 @@ interface CustomerRepository
     public function getById(int $id): array;
     public function getAll(): array;
     public function delete(int $id): void;
-    public function getByEmailAndCpf($email, $cpf): array;
+    public function getByEmailAndCpf(Email $email, CPF $cpf): array;
 }
