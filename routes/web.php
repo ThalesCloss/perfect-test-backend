@@ -8,9 +8,7 @@ use Illuminate\Support\Facades\Route;
 Telas para ver o funcionamento sem dados
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+Route::get('/', 'Dashboard@dashBoard');
 Route::get('/sales', 'Sale@sale');
 Route::get('/sales/{id}', 'Sale@getSale');
 Route::get('/products', function () {

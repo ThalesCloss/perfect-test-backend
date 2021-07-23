@@ -163,7 +163,7 @@
 <div class='card mt-3'>
     <div class='card-body'>
         <h5 class="card-title mb-5">Produtos
-            <a href='' class='btn btn-secondary float-right btn-sm rounded-pill'><i class='fa fa-plus'></i> Novo produto</a>
+            <a href='/products' class='btn btn-secondary float-right btn-sm rounded-pill'><i class='fa fa-plus'></i> Novo produto</a>
         </h5>
         <table class='table'>
             <tr>
@@ -177,39 +177,26 @@
                     Ações
                 </th>
             </tr>
+            @forelse ( $products as $product)
             <tr>
                 <td>
-                    Perfect Caps
+                    {{$product['name']}}
                 </td>
                 <td>
-                    R$ 100,00
+                    R$ {{number_format($product['price'],2,',', '.')}}
                 </td>
                 <td>
-                    <a href='' class='btn btn-primary'>Editar</a>
+                    <a href="/products/{{$product['id']}}" class='btn btn-primary'>Editar</a>
                 </td>
             </tr>
+            @empty
             <tr>
                 <td>
-                    Nature Caps
-                </td>
-                <td>
-                    R$ 120,00
-                </td>
-                <td>
-                    <a href='' class='btn btn-primary'>Editar</a>
+                    Nenhum produto cadastrado
                 </td>
             </tr>
-            <tr>
-                <td>
-                    Libid Caps
-                </td>
-                <td>
-                    R$ 150,00
-                </td>
-                <td>
-                    <a href='' class='btn btn-primary'>Editar</a>
-                </td>
-            </tr>
+            @endforelse
+
         </table>
     </div>
 </div>
