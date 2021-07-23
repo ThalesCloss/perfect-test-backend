@@ -69,6 +69,10 @@ class Sale
             throw new CreateSaleException('A quantidade informada é inválida');
         $this->amount = $amount;
     }
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function getSoldAt()
     {
