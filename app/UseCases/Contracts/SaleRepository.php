@@ -13,5 +13,5 @@ interface SaleRepository
     public function getAll(): array;
     public function delete(int $id): void;
     public function getSaleReport(): array;
-    public function getByCustomerPeriod(int $id, DateTime $initialDate, DateTime $endDate): array;
+    public function getByCustomerPeriod(DateTime $initialDate, DateTime $endDate, int $id): array;
 }

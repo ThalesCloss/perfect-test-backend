@@ -69,8 +69,8 @@ class EloquentSaleRepository implements SaleRepository
         )->groupBy('status')->get()->toArray();
     }
 
-    function getByCustomerPeriod(int $id, DateTime $initialDate, DateTime $endDate): array
+    function getByCustomerPeriod(DateTime $initialDate, DateTime $endDate, int $id = null): array
     {
-        return [];
+        SaleModel::with('customer')->find($id);
     }
 }
