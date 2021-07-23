@@ -19,7 +19,7 @@ class Dashboard extends Controller
     private GetSales $getSales;
     private GetSalesPeriodCustomer $getSalesPeriod;
     private CustomerRepository $customerRepository;
-    function __construct(GetSalesReport $getSalesReport, GetProducts $getProducts, GetSales $getSales, GetSalesPeriodCustomer $getSalesPeriod, EloquentCustomerRepository $customerRepository)
+    function __construct(GetSalesReport $getSalesReport, GetProducts $getProducts, GetSales $getSales, GetSalesPeriodCustomer $getSalesPeriod, CustomerRepository $customerRepository)
     {
         $this->getProducts = $getProducts;
         $this->getSalesReport = $getSalesReport;

@@ -19,9 +19,9 @@ class CreateSale
     private CustomerRepository $customerRepository;
     private ProductRepository $productRepository;
     function __construct(
-        EloquentSaleRepository $saleRepository,
-        EloquentCustomerRepository $customerRepository,
-        EloquentProductRepository $productRepository
+        SaleRepository $saleRepository,
+        CustomerRepository $customerRepository,
+        ProductRepository $productRepository
     ) {
         $this->saleRepository = $saleRepository;
         $this->customerRepository = $customerRepository;

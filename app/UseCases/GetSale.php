@@ -2,14 +2,13 @@
 
 namespace App\UseCases;
 
-use App\Repositories\EloquentRepositories\EloquentSaleRepository;
 use App\UseCases\Contracts\SaleRepository;
 
 class GetSale
 {
     private SaleRepository $saleRepository;
     function __construct(
-        EloquentSaleRepository $saleRepository
+        SaleRepository $saleRepository
     ) {
         $this->saleRepository = $saleRepository;
     }

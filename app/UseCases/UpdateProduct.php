@@ -3,14 +3,14 @@
 namespace App\UseCases;
 
 use App\Entities\Product;
-use App\Repositories\MemoryRepositories\MemoryProductRepository;
 use App\UseCases\Contracts\ProductRepository;
+use App\UseCases\Contracts\SaleRepository;
 
 class UpdateProduct
 {
     private ProductRepository $repository;
 
-    public function __construct(MemoryProductRepository $repository)
+    public function __construct(ProductRepository $repository)
     {
         $this->repository = $repository;
     }

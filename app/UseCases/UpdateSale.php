@@ -3,7 +3,6 @@
 namespace App\UseCases;
 
 use App\Entities\Sale;
-use App\Repositories\EloquentRepositories\EloquentSaleRepository;
 use App\Repositories\Exceptions\SaleNotFound;
 use App\UseCases\Contracts\SaleRepository;
 use DateTime;
@@ -13,7 +12,7 @@ class UpdateSale
 {
     private SaleRepository $saleRepository;
     function __construct(
-        EloquentSaleRepository $saleRepository
+        SaleRepository $saleRepository
     ) {
         $this->saleRepository = $saleRepository;
     }

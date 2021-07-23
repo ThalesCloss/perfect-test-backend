@@ -2,14 +2,13 @@
 
 namespace App\UseCases;
 
-use App\Repositories\MemoryRepositories\MemoryProductRepository;
 use App\UseCases\Contracts\ProductRepository;
 
 class GetProduct
 {
 
     private ProductRepository $repository;
-    public function __construct(MemoryProductRepository $repository)
+    public function __construct(ProductRepository $repository)
     {
         $this->repository = $repository;
     }

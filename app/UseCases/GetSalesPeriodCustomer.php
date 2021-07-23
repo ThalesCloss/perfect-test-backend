@@ -2,7 +2,6 @@
 
 namespace App\UseCases;
 
-use App\Repositories\EloquentRepositories\EloquentSaleRepository;
 use App\UseCases\Contracts\SaleRepository;
 use DateTime;
 
@@ -10,7 +9,7 @@ class GetSalesPeriodCustomer
 {
     private SaleRepository $saleRepository;
     function __construct(
-        EloquentSaleRepository $saleRepository
+        SaleRepository $saleRepository
     ) {
         $this->saleRepository = $saleRepository;
     }
