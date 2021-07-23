@@ -28,6 +28,8 @@ class Sale
         $this->unit_price = Currency::create($unit_price);
         $this->setAmount($amount);
         $this->id = $id;
+        if (!$this->validateDiscount())
+            throw new CreateSaleException('O valor do desconto não pode ser maior que o total da compra');
     }
 
     static function fromArray(array $sale, int $id = null)
@@ -69,6 +71,17 @@ class Sale
             throw new CreateSaleException('A quantidade informada é inválida');
         $this->amount = $amount;
     }
+
+    public function setDiscount(float $discount)
+    {
+        $this->discount = Currency::create($discount);
+    }
+
+    public function setSoldAt(DateTime $sold_at)
+    {
+        $this->sold_at = $sold_at;
+    }
+
     public function getId()
     {
         return $this->id;
@@ -108,5 +121,9 @@ class Sale
     public function getStatus()
     {
         return $this->status;
+    }
+    public function validateDiscount()
+    {
+        return $this->discount->getValue() <= ($this->amount * $this->unit_price->getValue());
     }
 }
