@@ -69,7 +69,7 @@
                     {{$sale['product']['name']}}
                 </td>
                 <td>
-
+                    {{$sale['sold_at']}}
                 </td>
                 <td>
                     R$ {{number_format($sale['total_price'],2,',','.')}}
