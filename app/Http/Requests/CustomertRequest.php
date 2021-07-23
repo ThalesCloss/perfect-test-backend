@@ -24,7 +24,7 @@ class CustomertRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|alpha|min:3',
+            'name' => 'required|min:3',
             'email' => 'email|required',
             'cpf' => 'required|cpf'
         ];
@@ -33,7 +33,6 @@ class CustomertRequest extends FormRequest
     {
         return [
             'name.required' => 'Informe seu nome',
-            'name.alpha' => 'Informe somente letras para o nome',
             'name.min' => 'Informe seu nome',
             'email.email' => 'Informe um e-mail válido',
             'email.required' => 'Informe seu e-mail',
