@@ -7,6 +7,7 @@ use App\Repositories\Exceptions\SaleNotFound;
 use App\Models\Sale as SaleModel;
 use App\UseCases\Contracts\SaleRepository;
 use DateTime;
+use Illuminate\Support\Facades\DB;
 
 class EloquentSaleRepository implements SaleRepository
 {
@@ -63,7 +64,9 @@ class EloquentSaleRepository implements SaleRepository
 
     function getSaleReport(): array
     {
-        return [];
+        return DB::table('sales')->select(
+            DB::raw('sum(amount) as amount, sum(total_price) as total, status')
+        )->groupBy('status')->get()->toArray();
     }
 
     function getByCustomerPeriod(int $id, DateTime $initialDate, DateTime $endDate): array
