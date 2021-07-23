@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Error;
 use Illuminate\Validation\Rule;
 
 class SaleRequest extends CustomertRequest
@@ -17,6 +16,7 @@ class SaleRequest extends CustomertRequest
         return true;
     }
 
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -29,9 +29,9 @@ class SaleRequest extends CustomertRequest
                 parent::rules(),
                 [
                     'product_id' => 'required|numeric|gt:0',
-                    'discount' => 'numeric',
+                    'discount' => 'required|numeric',
                     'amount' => 'required|numeric|gt:0',
-                    'sold_at' => 'date',
+                    'sold_at' => 'required',
                     'status' => ['required', Rule::in(['approved', 'canceled', 'returned'])]
                 ]
             );
