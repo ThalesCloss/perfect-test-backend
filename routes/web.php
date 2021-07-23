@@ -19,4 +19,6 @@ Route::get('/products', function () {
 });
 
 Route::post('/products', 'Product@createProduct');
+Route::get('/products/{id}', 'Product@getProduct');
+Route::put('/products/{id}', 'Product@updateProduct');
 Route::post('/sales', 'Sale@createSale');
