@@ -71,7 +71,8 @@ class EloquentSaleRepository implements SaleRepository
 
     function getByCustomerPeriod(DateTime $initialDate, DateTime $endDate, int $id = null): array
     {
-        $query = SaleModel::with('product')->whereBetween('sold_at', [$initialDate, $endDate]);
+
+        $query = SaleModel::with('product')->whereBetween('sold_at', [$initialDate->setTime(0,0,0), $endDate->setTime(23,59,59)]);
         if (!empty($id)) {
             $query->where('customer_id', $id);
         }
